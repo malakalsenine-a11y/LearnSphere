@@ -1,0 +1,252 @@
+/* ============ Hero Sction Style Start ==================*/
+
+.hero{
+    height: 100vh;
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+    url('../assets/hero-photo.jpg') center/cover no-repeat;
+
+}
+
+.hero h1 {
+  letter-spacing: 1px;
+}
+
+.hero p {
+  max-width: 600px;
+  margin: auto;
+}
+
+/* ============ Hero Sction Style End ==================*/
+
+/* ============ Category Sction Style Start ==================*/
+
+.category-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 30px;
+  transition: all 0.4s ease;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+  position: relative;
+  overflow: hidden;
+}
+
+.category-card::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #0d6efd, #6f42c1);
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transition: 0.4s;
+  z-index: 0;
+}
+
+/* hover effect */
+.category-card:hover {
+  transform: translateY(-12px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+
+/* يظهر الجريدينت */
+.category-card:hover::before {
+  opacity: 0.08;
+}
+
+/* icon box */
+.icon-box {
+  width: 70px;
+  height: 70px;
+  margin: auto;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #0d6efd, #6f42c1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.4s;
+}
+
+/* icon */
+.icon-box i {
+  font-size: 28px;
+  color: white;
+  transition: 0.4s;
+}
+
+/* hover icon animation */
+.category-card:hover .icon-box {
+  transform: rotate(10deg) scale(1.1);
+}
+
+/* text فوق الجريدينت */
+.category-card * {
+  position: relative;
+  z-index: 1;
+}
+
+/* hover text color */
+.category-card:hover h5 {
+  color: #0d6efd;
+}
+/* ============ Category Sction Style End ==================*/
+
+/* ============ Testimonials Sction Style Start ==================*/
+
+
+.testimonial-card {
+  background: #fff;
+  border-radius: 18px;
+  padding: 30px;
+  transition: all 0.4s ease;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+  position: relative;
+  overflow: hidden;
+
+  /* animation دخول */
+  opacity: 0;
+  transform: translateY(40px);
+  animation: fadeUp 0.8s ease forwards;
+}
+
+/* delay لكل كارد */
+.testimonial-card:nth-child(1) { animation-delay: 0.2s; }
+.testimonial-card:nth-child(2) { animation-delay: 0.4s; }
+.testimonial-card:nth-child(3) { animation-delay: 0.6s; }
+
+/* حركة الدخول */
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* الاقتباس */
+.testimonial-card::before {
+  content: "“";
+  font-size: 90px;
+  position: absolute;
+  top: -30px;
+  left: 20px;
+  color: #0d6efd;
+  opacity: 0.08;
+  transition: 0.4s;
+}
+
+/* hover */
+.testimonial-card:hover {
+  transform: translateY(-12px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+
+.testimonial-card:hover::after {
+  content: "";
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(13,110,253,0.15), transparent);
+  top: -50%;
+  left: -50%;
+  z-index: 0;
+}
+
+/* حركة الاقتباس */
+.testimonial-card:hover::before {
+  transform: translateY(-10px) scale(1.1);
+  opacity: 0.15;
+}
+
+/* النص */
+.quote {
+  font-style: italic;
+  color: #555;
+  line-height: 1.7;
+}
+
+/* الاسم */
+.testimonial-card h6 {
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+/* hover text */
+.testimonial-card:hover h6 {
+  color: #0d6efd;
+}
+
+/* ترتيب الطبقات */
+.testimonial-card * {
+  position: relative;
+  z-index: 1;
+}
+/* ============ Testimonials Sction Style End ==================*/
+
+/* ============ Footer Sction Style Start ==================*/
+
+.footer-section {
+  background: #0a0a0a;
+  color: #fff;
+  font-family: "Poppins", sans-serif;
+}
+
+.footer-title {
+  font-size: 26px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+/* Newsletter input + button */
+.footer-newsletter .form-control {
+  border-radius: 50px;
+  border: none;
+  padding: 12px 18px;
+  transition: 0.3s;
+}
+
+.footer-newsletter .form-control:focus {
+  outline: none;
+  box-shadow: 0 0 8px rgba(13,110,253,0.4);
+}
+
+.footer-newsletter .btn {
+  border-radius: 50px;
+  padding: 12px 25px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.footer-newsletter .btn:hover {
+  background: #0d6efd;
+  transform: translateY(-3px);
+}
+
+/* Social icons */
+.footer-socials .social-icon {
+  font-size: 20px;
+  color: #ccc;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.footer-socials .social-icon:hover {
+  color: #0d6efd;
+  transform: scale(1.2);
+}
+
+/* Copyright */
+.footer-section p {
+  font-size: 14px;
+  color: #bbb;
+}
+
+/* Responsive */
+@media (max-width: 767px) {
+  .footer-newsletter .form-control {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+}
+
+
+/* ============ Footer Sction Style End ==================*/

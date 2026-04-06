@@ -1,0 +1,44 @@
+{
+  "stats": {
+    "courses": 120,
+    "students": 3500,
+    "instructors": 45
+  },
+  "courses": [
+    {
+      "id": 1,
+      "title": "Web Development Bootcamp",
+      "category": "Web Development",
+      "instructor": "John Doe",
+      "rating": 5,
+      "duration": "10h",
+      "level": "Beginner"
+    },
+    {
+      "id": 2,
+      "title": "Data Science Basics",
+      "category": "Data Science",
+      "instructor": "Jane Smith",
+      "rating": 4,
+      "duration": "8h",
+      "level": "Intermediate"
+    },
+    {
+      "id": 3,
+      "title": "UI/UX Design",
+      "category": "Design",
+      "instructor": "Ali Khan",
+      "rating": 5,
+      "duration": "6h",
+      "level": "Beginner"
+    }
+  ],
+  "categories": [
+    { "name": "Web Development", "count": 40 },
+    { "name": "Data Science", "count": 25 },
+    { "name": "Design", "count": 30 },
+    { "name": "Cybersecurity", "count": 15 },
+    { "name": "Mobile Dev", "count": 20 },
+    { "name": "DevOps", "count": 10 }
+  ]
+}
