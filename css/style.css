@@ -1,39 +1,42 @@
-/* ============ Global Style ==================*/
+/* ============ Global Variables ==================*/
 
-:root{
-  --cat-card:#fff;
-  --cat-Hcard:#333;
-  --cat-THcard:#0d6efd;
-  --quote-coler:#555;
-  --fot-coler:#0a0a0a;
-  --social-coler:#CCC;
-  --Pfot--coler:#bbb;
-  --body--coler:#000;
-  --toggle--coler:#121212;
-  --Ctoggle--coler:#eee;
-
-   --bg: #ffffff;
-  --text: #333333;
-  --nav-bg: #f8f9fa;
+:root {
+  /* Light Mode Colors */
+  --bg: #ffffff;
+  --text: #000000;
   --card-bg: #ffffff;
-  --input-bg: #fafafa;
-  --badge-bg: #007bff;
+  --input-bg: #f5f5f5;
 
-  
+  --cat-card: #ffffff;
+  --cat-Hcard: #333;
+  --cat-THcard: #0d6efd;
+
+  --quote-coler: #555;
+  --fot-coler: #0a0a0a;
+  --social-coler: #ccc;
+  --Pfot-coler: #bbb;
+
+  --badge-bg: #0d6efd;
+
+  --bDark-color: #d1d1d1;
+  --toggle-color: #121212;
+  --toggle-icon-dark: #ffc107;
 }
 
+/* ============ Global ==================*/
 
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  transition: 0.3s ease;
+}
 
-
-
-
-/* ============ Hero Sction Style Start ==================*/
+/* ============ HERO ==================*/
 
 .hero {
   height: 100vh;
-  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-    url('../assets/hero-photo.jpg') center/cover no-repeat;
-
+  background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+  url('../assets/hero-photo.jpg') center/cover no-repeat;
 }
 
 .hero h1 {
@@ -45,322 +48,211 @@
   margin: auto;
 }
 
-/* ============ Hero Sction Style End ==================*/
-
-/* ============ Featured Courses Sction Style Start ==================*/
+/* ============ CARDS (Light Default) ==================*/
 
 .card {
+  background: var(--card-bg);
   border-radius: 15px;
   transition: 0.3s;
+  color: #000;
 }
 
 .card:hover {
   transform: translateY(-8px);
 }
 
-h2 {
-  font-weight: bold;
-}
-
-/* ============ Featured Courses Sction Style End ==================*/
-
-/* ============ Category Sction Style Start ==================*/
+/* ============ CATEGORY ==================*/
 
 .category-card {
   background: var(--cat-card);
   border-radius: 16px;
   padding: 30px;
-  transition: all 0.4s ease;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+  transition: 0.4s;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+  cursor: pointer;
   position: relative;
   overflow: hidden;
-  cursor: pointer;
 }
 
-.category-card:hover p {
-  color: var(--cat-Hcard);
-}
-
-.category-card::before {
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(135deg, #0d6efd, #6f42c1);
-  top: 0;
-  left: 0;
-  opacity: 0;
-  transition: 0.4s;
-  z-index: 0;
-}
-
-/* hover effect */
 .category-card:hover {
   transform: translateY(-12px) scale(1.02);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
 }
 
-/* يظهر الجريدينت */
-.category-card:hover::before {
-  opacity: 0.08;
+.category-card h5 {
+  color: #333;
 }
 
-#categories h2 {
-  font-size: 32px;
-  font-weight: bold;
+.category-card p {
+  color: #555;
+  font-weight: 500;
 }
 
-/* icon box */
+/* icon */
 .icon-box {
   width: 70px;
   height: 70px;
   margin: auto;
   border-radius: 50%;
-  background: linear-gradient(135deg, #0d6efd, #6f42c1);
+  background: linear-gradient(135deg,#0d6efd,#6f42c1);
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: 0.4s;
 }
 
-/* icon */
 .icon-box i {
   font-size: 28px;
-  color: white;
-  transition: 0.4s;
+  color: #fff;
 }
 
-/* hover icon animation */
-.category-card:hover .icon-box {
-  transform: rotate(10deg) scale(1.1);
-}
-
-/* text فوق الجريدينت */
-.category-card * {
-  position: relative;
-  z-index: 1;
-}
-
-/* hover text color */
-.category-card:hover h5 {
-  color: var(--cat-THcard);
-}
-
-/* ============ Category Sction Style End ==================*/
-
-/* ============ Testimonials Sction Style Start ==================*/
-
+/* ============ TESTIMONIALS ==================*/
 
 .testimonial-card {
-  background: var(--cat-card);
+  background: #fff;
   border-radius: 18px;
   padding: 30px;
-  transition: all 0.4s ease;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
-  position: relative;
-  overflow: hidden;
-
-  /* animation دخول */
-  opacity: 0;
-  transform: translateY(40px);
-  animation: fadeUp 0.8s ease forwards;
-}
-
-/* delay لكل كارد */
-.testimonial-card:nth-child(1) {
-  animation-delay: 0.2s;
-}
-
-.testimonial-card:nth-child(2) {
-  animation-delay: 0.4s;
-}
-
-.testimonial-card:nth-child(3) {
-  animation-delay: 0.6s;
-}
-
-/* حركة الدخول */
-@keyframes fadeUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* الاقتباس */
-.testimonial-card::before {
-  content: "“";
-  font-size: 90px;
-  position: absolute;
-  top: -30px;
-  left: 20px;
-  color: var(--cat-THcard);
-  opacity: 0.08;
   transition: 0.4s;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.08);
 }
 
-/* hover */
 .testimonial-card:hover {
   transform: translateY(-12px) scale(1.02);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
 }
 
-.testimonial-card:hover::after {
-  content: "";
-  position: absolute;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(circle, rgba(13, 110, 253, 0.15), transparent);
-  top: -50%;
-  left: -50%;
-  z-index: 0;
-}
-
-/* حركة الاقتباس */
-.testimonial-card:hover::before {
-  transform: translateY(-10px) scale(1.1);
-  opacity: 0.15;
-}
-
-/* النص */
 .quote {
-  font-style: italic;
   color: var(--quote-coler);
-  line-height: 1.7;
+  font-style: italic;
 }
 
-/* الاسم */
 .testimonial-card h6 {
-  font-weight: bold;
-  transition: 0.3s;
+  color: #000;
 }
 
-/* hover text */
-.testimonial-card:hover h6 {
-  color: var(--cat-THcard);
+body.dark .testimonial-card .text-muted {
+  color: #cccccc !important;
 }
-
-/* ترتيب الطبقات */
-.testimonial-card * {
-  position: relative;
-  z-index: 1;
-}
-
-
-/* ============ Testimonials Sction Style End ==================*/
-
-/* ============ Footer Sction Style Start ==================*/
+/* ============ FOOTER ==================*/
 
 .footer-section {
   background: var(--fot-coler);
-  color: var(--cat-card);
-  font-family: "Poppins", sans-serif;
+  color: #fff;
 }
 
-.footer-title {
-  font-size: 26px;
-  font-weight: bold;
-  letter-spacing: 1px;
-}
-
-/* Newsletter input + button */
-.footer-newsletter .form-control {
-  border-radius: 50px;
-  border: none;
-  padding: 12px 18px;
-  transition: 0.3s;
-}
-
-.footer-newsletter .form-control:focus {
-  outline: none;
-  box-shadow: 0 0 8px rgba(13, 110, 253, 0.4);
-}
-
-.footer-newsletter .btn {
-  border-radius: 50px;
-  padding: 12px 25px;
-  font-weight: bold;
-  transition: 0.3s;
-}
-
-.footer-newsletter .btn:hover {
-  background: var(--cat-THcard);
-  transform: translateY(-3px);
-}
-
-/* Social icons */
 .footer-socials .social-icon {
-  font-size: 20px;
-  color: var(--Pfot-coler);
+  color: var(--social-coler);
   transition: 0.3s;
-  cursor: pointer;
 }
 
 .footer-socials .social-icon:hover {
-  color: var(--cat-THcard);
-  transform: scale(1.2);
+  color: #0d6efd;
 }
 
-/* Copyright */
-.footer-section p {
-  font-size: 14px;
-  color: var(--social--coler);
+/* ============ INPUTS ==================*/
+
+input, textarea {
+  background: var(--input-bg);
+  color: var(--text);
 }
 
-/* Responsive */
-@media (max-width: 767px) {
-  .footer-newsletter .form-control {
-    width: 100%;
-    margin-bottom: 10px;
-  }
+/* ============ BADGE ==================*/
+
+.badge {
+  background: var(--badge-bg);
+  color: #fff;
 }
 
+/* ============ TOGGLE ICON ==================*/
 
-/* ============ Footer Sction Style End ==================*/
+#toggle_btn {
+  display: none;
+}
+
+.theme-toggle i {
+  font-size: 24px;
+  transition: 0.3s;
+}
+
+.moon {
+  color: #111;
+}
+
+.sun {
+  color: var(--toggle-icon-dark);
+  opacity: 0;
+}
+
+body.dark .moon {
+  opacity: 0;
+}
+
+body.dark .sun {
+  opacity: 1;
+}
+
+/* ============ DARK MODE ==================*/
 
 body.dark {
   --bg: #181a1b;
   --text: #e8e6e3;
-  --nav-bg: #202324;
-  --card-bg: #242728;
-  --input-bg: #2c2e30;
-  --badge-bg: #5a9bd8;
+  --card-bg: #1e1e22;
+  --input-bg: #2a2a2e;
 }
 
-/* ===== Apply variables ===== */
-body {
-  background-color: var(--bg);
-  color: var(--input-bg);
-  transition: 0.3s ease;
+/* Navbar Dark */
+body.dark nav {
+  background-color: #181a1b !important;
+  border-bottom: 1px solid #2c2f33;
 }
 
-nav {
-  background-color: var(--nav-bg);
+body.dark nav a {
+  color: #fff !important;
 }
 
-.card {
-  background-color: var(--card-bg);
+body.dark nav a:hover {
+  color: #4a90e2 !important;
+}
+
+/* Cards Dark */
+body.dark .card {
+  background: var(--card-bg);
   color: var(--text);
 }
 
-input, textarea {
-  background-color: var(--input-bg);
+body.dark .category-card {
+  background: var(--card-bg);
+}
+
+body.dark .category-card p {
+  color: #ffffff;
+}
+
+body.dark .testimonial-card {
+  background: var(--card-bg);
+}
+
+body.dark .testimonial-card .text-muted {
+  color: #cccccc !important;
+}
+
+body.dark .quote {
+  color: #ccc;
+}
+
+body.dark .category-card h5,
+body.dark .testimonial-card h6 {
+  color: #ffffff;
+}
+
+body.dark .category-card p {
+  color: #ccc;
+}
+
+/* Titles Dark */
+body.dark h2 {
+  color: var(--bDark-color);
+}
+
+/* Texts Dark */
+body.dark p,
+body.dark small {
   color: var(--text);
 }
-
-.badge {
-  background-color: var(--badge-bg);
-  color: #fff;
-}
-
-/* ===== Icons visibility ===== */
-#toggle_btn {
-  display: none;
-}
-.moon { display: inline-block; }
-.sun { display: none; }
-
-body.dark .moon { display: none; }
-body.dark .sun { display: inline-block; }
-
-/* ============ Dark Mode ==================*/
