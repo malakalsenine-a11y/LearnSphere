@@ -3,10 +3,9 @@ fetch('./data/data.json')
   .then(data => {
 
     // ===== Stats =====
-    document.getElementById('coursesCount').innerText = data.stats.courses;
-    document.getElementById('studentsCount').innerText = data.stats.students;
-    document.getElementById('instructorsCount').innerText = data.stats.instructors;
-
+document.getElementById('coursesCount').innerText = data.stats.totalCourses;
+document.getElementById('studentsCount').innerText = data.stats.studentsEnrolled;
+document.getElementById('instructorsCount').innerText = data.stats.instructors;
 
     // ===== Featured Courses (أول 3 فقط) =====
     const featured = document.getElementById('featuredCourses');
@@ -79,8 +78,7 @@ fetch('./data/data.json')
 
 
     // ===== Navbar badge count (مؤقت) =====
-    document.getElementById('count').innerText = data.courses.length;
-
+document.getElementById('count').innerText = data.stats.totalCourses;
   });
 
 // ===== Email Validation =====

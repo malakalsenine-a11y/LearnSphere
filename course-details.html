@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Course Details | LearnSphere</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="./css/bootstrap.min.css" />
+  <!-- FontAwesome CSS -->
+  <link rel="stylesheet" href="./css/all.min.css" />
+  <!-- Style CSS -->
+  <link rel="stylesheet" href="./css/style.css" />
+</head>
+<body>
+
+  <!-- ===== Navbar ===== -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top shadow">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="index.html">LearnSphere</a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="nav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link active" href="courses.html">Courses</a></li>
+            <li class="nav-item"><a class="nav-link" href="my-learning.html">My Learning</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Instructors</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+        </ul>
+
+        <span class="badge bg-primary ms-3" id="count">0</span>
+
+        <div class="ms-4">
+          <input type="checkbox" id="toggle_btn" hidden />
+          <label for="toggle_btn" class="theme-toggle">
+            <i class="fa-solid fa-moon moon"></i>
+            <i class="fa-solid fa-sun sun"></i>
+          </label>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===== Course Details ===== -->
+  <section class="py-5">
+    <div class="container">
+      <div id="courseDetails" class="mb-5"></div>
+
+      <div class="card shadow-sm border-0 p-4">
+        <h3 class="fw-bold mb-4">Course Quiz</h3>
+        <form id="quizForm"></form>
+        <button class="btn btn-primary mt-3" id="submitQuiz">Submit Quiz</button>
+        <div id="quizResult" class="mt-4 fw-bold fs-4"></div>
+      </div>
+    </div>
+  </section>
+
+  <script src="./js/bootstrap.bundle.min.js"></script>
+  <script src="./js/course-details.js"></script>
+</body>
+</html>
