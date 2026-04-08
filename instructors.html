@@ -4,12 +4,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Course Details | LearnSphere</title>
+  <title>Instructors | LearnSphere</title>
 
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="./css/bootstrap.min.css" />
   <!-- FontAwesome CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <!-- <link rel="stylesheet" href="./css/all.min.css" /> -->
   <!-- Style CSS -->
   <link rel="stylesheet" href="./css/style.css" />
 </head>
@@ -28,9 +29,9 @@
       <div class="collapse navbar-collapse" id="nav">
         <ul class="navbar-nav ms-auto">
           <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-          <li class="nav-item"><a class="nav-link active" href="courses.html">Courses</a></li>
+          <li class="nav-item"><a class="nav-link" href="courses.html">Courses</a></li>
           <li class="nav-item"><a class="nav-link" href="my-learning.html">My Learning</a></li>
-          <li class="nav-item"><a class="nav-link" href="instructors.html">Instructors</a></li>
+          <li class="nav-item"><a class="nav-link active" href="instructors.html">Instructors</a></li>
           <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
         </ul>
 
@@ -47,22 +48,21 @@
     </div>
   </nav>
 
-  <!-- ===== Course Details ===== -->
+  <!-- ===== Instructors Section ===== -->
   <section class="py-5">
     <div class="container">
-      <div id="courseDetails" class="mb-5"></div>
+      <h2 class="fw-bold text-center mb-4">Meet Our Instructors</h2>
 
-      <div class="card shadow-sm border-0 p-4">
-        <h3 class="fw-bold mb-4">Course Quiz</h3>
-        <form id="quizForm"></form>
-        <button class="btn btn-primary mt-3" id="submitQuiz">Submit Quiz</button>
-        <div id="quizResult" class="mt-4 fw-bold fs-4"></div>
+      <div class="mb-4">
+        <input type="text" id="instructorSearch" class="form-control" placeholder="Search instructor..." />
       </div>
+
+      <div class="row g-4" id="instructorsContainer"></div>
     </div>
   </section>
 
   <script src="./js/bootstrap.bundle.min.js"></script>
-  <script src="./js/course-details.js"></script>
+  <script src="./js/instructors.js"></script>
 </body>
 
 </html>

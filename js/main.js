@@ -39,7 +39,7 @@ document.getElementById('instructorsCount').innerText = data.stats.instructors;
     `).join('');
 
 
-    // ===== Categories (من JSON + icons نحددها هنا) =====
+    // ===== Categories =====
     
     const iconMap = {
       "Web Development": "fa-solid fa-code",
@@ -77,7 +77,7 @@ document.getElementById('instructorsCount').innerText = data.stats.instructors;
     `).join('');
 
 
-    // ===== Navbar badge count (مؤقت) =====
+    // ===== Navbar badge count  =====
 document.getElementById('count').innerText = data.stats.totalCourses;
   });
 
