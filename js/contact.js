@@ -66,17 +66,21 @@ contactForm.addEventListener("submit", function (e) {
       date: new Date().toLocaleString()
     };
 
-    let messages = JSON.parse(localStorage.getItem("contactMessages")) || [];
-    messages.push(newMessage);
-    localStorage.setItem("contactMessages", JSON.stringify(messages));
+  let messages = JSON.parse(localStorage.getItem("contactMessages")) || [];
+messages.push(newMessage);
+localStorage.setItem("contactMessages", JSON.stringify(messages));
 
-    successMessage.classList.remove("d-none");
-    contactForm.reset();
-  } else {
-    successMessage.classList.add("d-none");
-  }
+successMessage.classList.remove("d-none");
+contactForm.reset();
+
+setTimeout(() => {
+  successMessage.classList.add("d-none");
+}, 3000);
+
+} else {
+  successMessage.classList.add("d-none");
+}
 });
-
 // ===== Helpers =====
 function clearErrors() {
   nameError.textContent = "";

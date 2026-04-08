@@ -20,25 +20,50 @@ document.getElementById('instructorsCount').innerText = data.stats.instructors;
 
           <span class="badge bg-info">${course.category}</span>
 
-          <p class="mt-2">👨‍🏫 ${course.instructor}</p>
+         <p class="mt-2">
+  <i class="fa-solid fa-chalkboard-user me-2 text-primary"></i>
+  ${course.instructor}
+</p>
 
-          <p>
-            ${"⭐".repeat(course.rating)}${"☆".repeat(5 - course.rating)}
-          </p>
+<p class="text-warning stars">
+  ${generateStars(course.rating)} (${course.rating})
+</p>
 
-          <p>⏱ ${course.duration}</p>
+<p>
+  <i class="fa-regular fa-clock me-2 text-secondary"></i>
+  ${course.duration}
+</p>
 
-          <span class="badge bg-warning text-dark">${course.level}</span>
+<p>
+  <i class="fa-solid fa-signal me-2 text-dark"></i>
+  <span class="badge bg-warning text-dark">${course.level}</span>
+</p>
 
-          <button class="btn btn-success w-100 mt-3">
-            Enroll Now
-          </button>
+<button class="btn btn-success w-100 mt-3">
+  <i class="fa-solid fa-user-plus me-2"></i>
+  Enroll Now
+</button>
 
         </div>
       </div>
     `).join('');
 
+function generateStars(rating) {
+  let starsHTML = "";
+  const fullStars = Math.floor(rating);
 
+  for (let i = 1; i <= 5; i++) {
+    if (i <= fullStars) {
+      starsHTML += `<i class="fa-solid fa-star"></i>`;
+    } else {
+      starsHTML += `<i class="fa-regular fa-star"></i>`;
+    }
+  }
+
+  return starsHTML;
+}
+
+    
     // ===== Categories =====
     
     const iconMap = {
@@ -78,8 +103,14 @@ document.getElementById('instructorsCount').innerText = data.stats.instructors;
 
 
     // ===== Navbar badge count  =====
-document.getElementById('count').innerText = data.stats.totalCourses;
+updateNavbarCount();
   });
+
+
+  function updateNavbarCount() {
+  const enrolled = JSON.parse(localStorage.getItem("enrolled")) || [];
+  document.getElementById("count").innerText = enrolled.length;
+}
 
 // ===== Email Validation =====
 function isValidEmail(email) {

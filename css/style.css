@@ -28,9 +28,46 @@
 body {
   background-color: var(--bg);
   color: var(--text);
-  transition: 0.3s ease;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+/* ============ STARS ==================*/
+.stars i {
+  margin-right: 3px;
+  font-size: 0.95rem;
+}
+
+.stars .fa-star,
+.stars .fa-star-half-stroke {
+  color: #ffc107;
+}
+
+.stars .fa-regular.fa-star {
+  color: #d6d6d6;
+}
+
+body.dark .stars .fa-regular.fa-star {
+  color: #555;
+}
+
+/* ============ Navbar ==================*/
+.navbar-brand {
+  font-size: 1.4rem;
+  letter-spacing: 0.5px;
+}
+
+.nav-link {
+  font-weight: 500;
+  transition: 0.2s ease;
+}
+
+.nav-link:hover {
+  color: #0d6efd !important;
+}
+
+.nav-link.active {
+  font-weight: 700;
+}
 /* ============ HERO ==================*/
 
 .hero {
@@ -52,13 +89,48 @@ body {
 
 .card {
   background: var(--card-bg);
-  border-radius: 15px;
-  transition: 0.3s;
-  color: #000;
+  border-radius: 16px;
+  transition: all 0.3s ease;
+  color: var(--text);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  overflow: hidden;
 }
 
 .card:hover {
   transform: translateY(-8px);
+}
+
+.card-title {
+  font-size: 1.15rem;
+  line-height: 1.5;
+}
+
+.card p {
+  margin-bottom: 0.6rem;
+}
+
+.card-header {
+  font-size: 0.95rem;
+  letter-spacing: 0.4px;
+}
+
+
+
+/* ============ buttons ==================*/
+
+.btn {
+  border-radius: 10px;
+  font-weight: 600;
+  transition: all 0.25s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.85;
 }
 
 /* ============ CATEGORY ==================*/
@@ -108,14 +180,14 @@ body {
 
 .testimonial-card {
   background: #fff;
-  border-radius: 18px;
+  border-radius: 20px;
   padding: 30px;
-  transition: 0.4s;
+  transition: 0.3s ease;
   box-shadow: 0 5px 20px rgba(0,0,0,0.08);
 }
 
 .testimonial-card:hover {
-  transform: translateY(-12px) scale(1.02);
+  transform: translateY(-8px);
 }
 
 .quote {
@@ -127,9 +199,30 @@ body {
   color: #000;
 }
 
+.testimonial-avatar {
+  width: 70px;
+  height: 70px;
+  background: #0d6efd;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+
 body.dark .testimonial-card .text-muted {
   color: #cccccc !important;
 }
+/* ============ Contact ==================*/
+.form-label {
+  font-weight: 600;
+}
+
+small.text-danger {
+  font-size: 0.85rem;
+}
+
 /* ============ FOOTER ==================*/
 
 .footer-section {
@@ -148,9 +241,21 @@ body.dark .testimonial-card .text-muted {
 
 /* ============ INPUTS ==================*/
 
-input, textarea {
-  background: var(--input-bg);
-  color: var(--text);
+input,
+textarea,
+select {
+  background: var(--input-bg) !important;
+  color: var(--text) !important;
+  border-radius: 10px !important;
+  border: 1px solid #dcdcdc !important;
+  transition: all 0.3s ease;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: #0d6efd !important;
+  box-shadow: 0 0 0 0.15rem rgba(13, 110, 253, 0.15) !important;
 }
 
 /* ============ BADGE ==================*/
@@ -158,6 +263,28 @@ input, textarea {
 .badge {
   background: var(--badge-bg);
   color: #fff;
+  font-size: 0.8rem;
+  padding: 8px 12px;
+  border-radius: 999px;
+}
+
+/* ============ Progress Bar ==================*/
+
+.progress {
+  border-radius: 999px;
+  background-color: #e9ecef;
+  overflow: hidden;
+}
+
+.progress-bar {
+  border-radius: 999px;
+}
+
+/* ============ Alerts ==================*/
+
+.alert {
+  border-radius: 14px;
+  border: none;
 }
 
 /* ============ TOGGLE ICON ==================*/
@@ -169,6 +296,22 @@ input, textarea {
 .theme-toggle i {
   font-size: 24px;
   transition: 0.3s;
+}
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background: rgba(0,0,0,0.05);
+  transition: all 0.3s ease;
+}
+
+.theme-toggle:hover {
+  transform: rotate(10deg) scale(1.05);
 }
 
 .moon {
@@ -255,4 +398,83 @@ body.dark h2 {
 body.dark p,
 body.dark small {
   color: var(--text);
+}
+
+body.dark input,
+body.dark textarea,
+body.dark select {
+  border: 1px solid #3a3a3f !important;
+  background: #2a2a2e !important;
+  color: #fff !important;
+}
+
+body.dark .form-control,
+body.dark .form-select {
+  background: #2a2a2e !important;
+  color: #fff !important;
+  border-color: #3a3a3f !important;
+}
+
+body.dark .form-control::placeholder,
+body.dark textarea::placeholder {
+  color: #aaa !important;
+}
+
+body.dark .alert-info {
+  background-color: #1f2d3d;
+  color: #d9ecff;
+}
+
+body.dark .alert-danger {
+  background-color: #3b1f24;
+  color: #ffd6dc;
+}
+
+body.dark .alert-warning {
+  background-color: #3d321f;
+  color: #ffe9b3;
+}
+
+body.dark .alert-success {
+  background-color: #1f3a2a;
+  color: #d7ffe5;
+}
+
+body.dark .theme-toggle {
+  background: rgba(255,255,255,0.08);
+}
+
+body.dark .badge {
+  color: #fff;
+}
+
+body.dark .list-group-item {
+  background-color: #1e1e22;
+  color: #fff;
+  border-color: #333;
+}
+
+
+/* ============ RESPONSIVE ==================*/
+@media (max-width: 768px) {
+  .hero {
+    height: 80vh;
+    padding: 20px;
+  }
+
+  .hero h1 {
+    font-size: 2rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
+  }
+
+  .footer-newsletter input {
+    width: 100% !important;
+  }
+
+  .theme-toggle {
+    margin-top: 10px;
+  }
 }

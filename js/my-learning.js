@@ -1,4 +1,5 @@
 const myCoursesContainer = document.getElementById("myCoursesContainer");
+const statsContainer = document.getElementById("statsContainer");
 const countBadge = document.getElementById("count");
 const toggleBtn = document.getElementById("toggle_btn");
 
@@ -12,21 +13,35 @@ applySavedTheme();
 // ===== Display Enrolled Courses =====
 function displayMyCourses() {
   myCoursesContainer.innerHTML = "";
+  statsContainer.innerHTML = "";
 
   if (enrolledCourses.length === 0) {
     myCoursesContainer.innerHTML = `
       <div class="col-12 text-center">
         <div class="alert alert-info">
-          You haven't enrolled in any courses yet.
+          <p class="mb-3">You haven't enrolled in any courses yet.</p>
+          <a href="courses.html" class="btn btn-primary">Browse Courses</a>
         </div>
       </div>
     `;
     return;
   }
 
+  displayStats();
+
   enrolledCourses.forEach((course) => {
     const score = localStorage.getItem(`quizScore_${course.id}`);
-    const stars = "★".repeat(Math.floor(course.rating)) + "☆".repeat(5 - Math.floor(course.rating));
+    const numericScore = score !== null ? parseInt(score) : 0;
+    const progress = (numericScore / 5) * 100;
+
+    let progressClass = "bg-danger";
+    if (progress >= 80) {
+      progressClass = "bg-success";
+    } else if (progress >= 40) {
+      progressClass = "bg-warning";
+    }
+
+const stars = generateStars(course.rating);
 
     myCoursesContainer.innerHTML += `
       <div class="col-md-6 col-lg-4">
@@ -36,15 +51,20 @@ function displayMyCourses() {
             <p><strong>Instructor:</strong> ${course.instructor}</p>
             <p><strong>Category:</strong> ${course.category}</p>
             <p><strong>Level:</strong> ${course.level}</p>
-            <p class="text-warning fw-semibold">${stars} (${course.rating})</p>
+            <p class="text-warning fw-semibold stars">${stars} (${course.rating})</p>
             <p><strong>Duration:</strong> ${course.duration}</p>
             <p><strong>Students:</strong> ${course.studentsCount}</p>
             <p class="fw-bold text-primary">$${course.price}</p>
 
-            <p class="mt-2">
+            <p class="mt-2 mb-1">
               <strong>Quiz Score:</strong> 
-              ${score !== null ? `<span class="text-success">${score}</span>` : `<span class="text-muted">Not attempted yet</span>`}
+              ${score !== null ? `<span class="text-success">${score}/5</span>` : `<span class="text-muted">Not attempted yet</span>`}
             </p>
+
+            <p class="mb-1"><strong>Progress:</strong> ${progress}%</p>
+            <div class="progress mb-3" style="height: 10px;">
+              <div class="progress-bar ${progressClass}" role="progressbar" style="width: ${progress}%"></div>
+            </div>
 
             <div class="mt-auto d-grid gap-2">
               <a href="course-details.html?id=${course.id}" class="btn btn-outline-primary">
@@ -62,6 +82,69 @@ function displayMyCourses() {
   });
 
   addRemoveEvents();
+}
+
+function generateStars(rating) {
+  let starsHTML = "";
+  const fullStars = Math.floor(rating);
+
+  for (let i = 1; i <= 5; i++) {
+    if (i <= fullStars) {
+      starsHTML += `<i class="fa-solid fa-star"></i>`;
+    } else {
+      starsHTML += `<i class="fa-regular fa-star"></i>`;
+    }
+  }
+
+  return starsHTML;
+}
+
+// ===== Display Summary Stats =====
+function displayStats() {
+  const totalEnrolled = enrolledCourses.length;
+
+  let completedCourses = 0;
+  let totalScore = 0;
+  let attemptedCount = 0;
+
+  enrolledCourses.forEach((course) => {
+    const score = localStorage.getItem(`quizScore_${course.id}`);
+
+    if (score !== null) {
+      const numericScore = parseInt(score);
+      totalScore += numericScore;
+      attemptedCount++;
+
+      if (numericScore === 5) {
+        completedCourses++;
+      }
+    }
+  });
+
+  const averageScore = attemptedCount > 0 ? (totalScore / attemptedCount).toFixed(1) : 0;
+
+  statsContainer.innerHTML = `
+    <div class="col-md-4">
+      <div class="card text-center shadow-sm border-0 p-4">
+        <h5 class="fw-bold">Total Enrolled</h5>
+        <p class="display-6 text-primary mb-0">${totalEnrolled}</p>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card text-center shadow-sm border-0 p-4">
+        <h5 class="fw-bold">Completed Courses</h5>
+        <p class="display-6 text-success mb-0">${completedCourses}</p>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card text-center shadow-sm border-0 p-4">
+        <h5 class="fw-bold">Average Quiz Score</h5>
+        <p class="display-6 text-warning mb-0">${averageScore}/5</p>
+      </div>
+    </div>
+  `;
 }
 
 // ===== Remove Course =====
@@ -108,4 +191,4 @@ toggleBtn.addEventListener("change", () => {
   } else {
     localStorage.setItem("theme", "light");
   }
-});
+});     

@@ -30,7 +30,7 @@
       <div class="collapse navbar-collapse" id="nav">
 
         <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
           <li class="nav-item"><a class="nav-link" href="courses.html">Courses</a></li>
           <li class="nav-item"><a class="nav-link" href="my-learning.html">My Learning</a></li>
           <li class="nav-item"><a class="nav-link" href="instructors.html">Instructors</a></li>
@@ -40,7 +40,7 @@
         <span class="badge bg-primary ms-3" id="count">0</span>
 
         <div class="ms-4">
-          <input type="checkbox" id="toggle_btn">
+          <input type="checkbox" id="toggle_btn" hidden >
           <label for="toggle_btn" class="theme-toggle">
             <i class="fa-solid fa-moon moon"></i>
             <i class="fa-solid fa-sun sun"></i>
@@ -57,7 +57,7 @@
       <p class="lead">Start your journey with the best online courses</p>
 
       <a href="courses.html" class="btn btn-primary m-2">Browse Courses</a>
-      <a href="#" class="btn btn-outline-light m-2">Sign Up Free</a>
+      <a href="courses.html" class="btn btn-outline-light m-2">Sign Up Free</a>
     </div>
   </section>
 
@@ -104,39 +104,69 @@
   </section>
 
   <!-- ===== Testimonials ===== -->
-  <section class="py-5 bg-light">
-    <div class="container">
-      <h2 class="text-center mb-5 fw-bold">What Our Students Say?</h2>
+<section class="py-5 bg-light">
+  <div class="container">
+    <h2 class="text-center mb-5 fw-bold">What Our Students Say?</h2>
 
-      <div class="row">
+    <div class="row">
 
-        <div class="col-md-4 mb-4">
-          <div class="testimonial-card text-center p-4">
-            <p class="quote">"Amazing platform! I learned so much."</p>
-            <h6 class="mt-3 mb-1">Ahmed Ali</h6>
-            <small class="text-muted">Web Development Bootcamp</small>
+      <div class="col-md-4 mb-4">
+        <div class="testimonial-card text-center p-4 h-100 shadow-sm rounded-4">
+          <div class="testimonial-avatar mb-3">
+            <i class="fa-solid fa-user-graduate fa-2x"></i>
           </div>
-        </div>
-
-        <div class="col-md-4 mb-4">
-          <div class="testimonial-card text-center p-4">
-            <p class="quote">"Very clear explanations and great content."</p>
-            <h6 class="mt-3 mb-1">Sara Khaled</h6>
-            <small class="text-muted">Data Science Basics</small>
+          <div class="text-warning mb-2">
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
           </div>
+          <p class="quote">"Amazing platform! I learned so much."</p>
+          <h6 class="mt-3 mb-1">Ahmed Ali</h6>
+          <small class="text-muted">Web Development Bootcamp</small>
         </div>
-
-        <div class="col-md-4 mb-4">
-          <div class="testimonial-card text-center p-4">
-            <p class="quote">"Best learning experience ever!"</p>
-            <h6 class="mt-3 mb-1">Ali Hassan</h6>
-            <small class="text-muted">UI/UX Design</small>
-          </div>
-        </div>
-
       </div>
+
+      <div class="col-md-4 mb-4">
+        <div class="testimonial-card text-center p-4 h-100 shadow-sm rounded-4">
+          <div class="testimonial-avatar mb-3">
+            <i class="fa-solid fa-user-graduate fa-2x"></i>
+          </div>
+          <div class="text-warning starts mb-2">
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-regular fa-star"></i>
+          </div>
+          <p class="quote">"Very clear explanations and great content."</p>
+          <h6 class="mt-3 mb-1">Sara Khaled</h6>
+          <small class="text-muted">Data Science Basics</small>
+        </div>
+      </div>
+
+      <div class="col-md-4 mb-4">
+        <div class="testimonial-card text-center p-4 h-100 shadow-sm rounded-4">
+          <div class="testimonial-avatar mb-3">
+            <i class="fa-solid fa-user-graduate fa-2x"></i>
+          </div>
+          <div class="text-warning starts mb-2">
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star-half-stroke"></i>
+          </div>
+          <p class="quote">"Best learning experience ever!"</p>
+          <h6 class="mt-3 mb-1">Ali Hassan</h6>
+          <small class="text-muted">UI/UX Design</small>
+        </div>
+      </div>
+
     </div>
-  </section>
+  </div>
+</section>
 
   <!-- ===== Footer ===== -->
   <footer class="footer-section text-white text-center p-5">

@@ -67,7 +67,7 @@ function displayInstructors(data) {
   }
 
   data.forEach((instructor) => {
-    const stars = "★".repeat(Math.floor(instructor.rating)) + "☆".repeat(5 - Math.floor(instructor.rating));
+const stars = generateStars(instructor.rating);
 
     instructorsContainer.innerHTML += `
       <div class="col-md-6 col-lg-4">
@@ -83,13 +83,28 @@ function displayInstructors(data) {
           <p class="text-muted mb-1">${instructor.category}</p>
           <p class="mb-1"><strong>Level:</strong> ${instructor.level}</p>
           <p class="mb-1"><strong>Courses:</strong> ${instructor.coursesCount}</p>
-          <p class="text-warning fw-semibold">${stars} (${instructor.rating})</p>
+          <p class="text-warning fw-semibold stars">${stars} (${instructor.rating})</p>
 
           <a href="courses.html" class="btn btn-outline-primary mt-3">View Courses</a>
         </div>
       </div>
     `;
   });
+}
+
+function generateStars(rating) {
+  let starsHTML = "";
+  const fullStars = Math.floor(rating);
+
+  for (let i = 1; i <= 5; i++) {
+    if (i <= fullStars) {
+      starsHTML += `<i class="fa-solid fa-star"></i>`;
+    } else {
+      starsHTML += `<i class="fa-regular fa-star"></i>`;
+    }
+  }
+
+  return starsHTML;
 }
 
 // ===== Search Instructors =====

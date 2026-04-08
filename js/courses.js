@@ -39,9 +39,33 @@ function displayCourses(data) {
   data.forEach((course) => {
     const isEnrolled = enrolled.some((item) => item.id === course.id);
 
-    const stars = "★".repeat(Math.floor(course.rating)) + "☆".repeat(5 - Math.floor(course.rating));
+const stars = generateStars(course.rating);
 
     const categoryColor = getCategoryColor(course.category);
+
+
+    let enrollButton = "";
+
+if (!course.available) {
+  enrollButton = `
+    <button class="btn btn-secondary" disabled>
+      Coming Soon
+    </button>
+  `;
+} else if (isEnrolled) {
+  enrollButton = `
+    <button class="btn btn-warning" disabled>
+      Enrolled ✓
+    </button>
+  `;
+} else {
+  enrollButton = `
+    <button class="btn btn-warning enroll-btn" data-id="${course.id}">
+      Enroll
+    </button>
+  `;
+}
+
 
     coursesContainer.innerHTML += `
       <div class="col-md-6 col-lg-4">
@@ -58,20 +82,18 @@ function displayCourses(data) {
               <span class="badge bg-secondary">${course.level}</span>
             </div>
 
-            <p class="mb-1 text-warning fw-semibold">${stars} (${course.rating})</p>
+            <p class="mb-1 text-warning fw-semibold stars">${stars} (${course.rating})</p>
             <p class="mb-1"><i class="fa-regular fa-clock"></i> ${course.duration}</p>
             <p class="mb-1"><i class="fa-solid fa-users"></i> ${course.studentsCount} students</p>
             <p class="fw-bold fs-5 text-primary">$${course.price}</p>
 
-            <div class="mt-auto d-grid gap-2">
-              <button class="btn btn-warning enroll-btn" data-id="${course.id}" ${isEnrolled ? "disabled" : ""}>
-                ${isEnrolled ? "Enrolled ✓" : "Enroll"}
-              </button>
+<div class="mt-auto d-grid gap-2">
+  ${enrollButton}
 
-              <a href="course-details.html?id=${course.id}" class="btn btn-outline-dark">
-                View Details
-              </a>
-            </div>
+  <a href="course-details.html?id=${course.id}" class="btn btn-outline-dark">
+    View Details
+  </a>
+</div>
           </div>
         </div>
       </div>
@@ -80,6 +102,22 @@ function displayCourses(data) {
 
   addEnrollEvents();
 }
+
+function generateStars(rating) {
+  let starsHTML = "";
+  const fullStars = Math.floor(rating);
+
+  for (let i = 1; i <= 5; i++) {
+    if (i <= fullStars) {
+      starsHTML += `<i class="fa-solid fa-star"></i>`;
+    } else {
+      starsHTML += `<i class="fa-regular fa-star"></i>`;
+    }
+  }
+
+  return starsHTML;
+}
+
 
 // ===== Search + Filters + Sort =====
 function applyFilters() {

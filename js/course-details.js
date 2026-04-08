@@ -48,7 +48,7 @@ fetch("./data/data.json")
 
 // ===== Display Course Details =====
 function displayCourseDetails(course) {
-  const stars = "★".repeat(Math.floor(course.rating)) + "☆".repeat(5 - Math.floor(course.rating));
+const stars = generateStars(course.rating);
 
   courseDetails.innerHTML = `
     <div class="card shadow-sm border-0 p-4">
@@ -56,7 +56,7 @@ function displayCourseDetails(course) {
       <p><strong>Instructor:</strong> ${course.instructor}</p>
       <p><strong>Category:</strong> ${course.category}</p>
       <p><strong>Level:</strong> ${course.level}</p>
-      <p><strong>Rating:</strong> <span class="text-warning">${stars} (${course.rating})</span></p>
+      <p><strong>Rating:</strong> <span class="text-warning stars">${stars} (${course.rating})</span></p>
       <p><strong>Duration:</strong> ${course.duration}</p>
       <p><strong>Students:</strong> ${course.studentsCount}</p>
       <p><strong>Price:</strong> <span class="text-primary fw-bold">$${course.price}</span></p>
@@ -96,6 +96,21 @@ function displayQuiz(quiz) {
   });
 }
 
+function generateStars(rating) {
+  let starsHTML = "";
+  const fullStars = Math.floor(rating);
+
+  for (let i = 1; i <= 5; i++) {
+    if (i <= fullStars) {
+      starsHTML += `<i class="fa-solid fa-star"></i>`;
+    } else {
+      starsHTML += `<i class="fa-regular fa-star"></i>`;
+    }
+  }
+
+  return starsHTML;
+}
+
 // ===== Quiz Result =====
 submitQuizBtn.addEventListener("click", function (e) {
   e.preventDefault();
@@ -118,6 +133,10 @@ submitQuizBtn.addEventListener("click", function (e) {
 
   // Save score in localStorage
   localStorage.setItem(`quizScore_${currentCourse.id}`, score);
+
+  submitQuizBtn.disabled = true;
+submitQuizBtn.textContent = "Quiz Submitted ✓";
+
 });
 
 // ===== Navbar Badge =====
