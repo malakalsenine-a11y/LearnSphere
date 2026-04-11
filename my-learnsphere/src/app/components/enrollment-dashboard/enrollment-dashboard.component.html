@@ -1,0 +1,15 @@
+<div class="container">
+  <h2>Enrollment Dashboard</h2>
+
+  <p><strong>Enrolled Courses:</strong> {{ enrolledCourses.length }}</p>
+
+  <ul *ngIf="enrolledCourses.length > 0; else noCourses">
+    <li *ngFor="let course of enrolledCourses">
+      {{ course.title }}
+    </li>
+  </ul>
+
+  <ng-template #noCourses>
+    <p>No enrolled courses yet.</p>
+  </ng-template>
+</div>
