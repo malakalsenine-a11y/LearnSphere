@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LearnSphere</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="./css/bootstrap.min.css">
+  <!-- FontAwesome CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <!-- Style CSS -->
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+
+  <!-- ===== Navbar ===== -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top shadow">
+    <div class="container">
+
+      <a class="navbar-brand fw-bold" href="#">LearnSphere</a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="nav">
+
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="courses.html">Courses</a></li>
+          <li class="nav-item"><a class="nav-link" href="my-learning.html">My Learning</a></li>
+          <li class="nav-item"><a class="nav-link" href="instructors.html">Instructors</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+        </ul>
+
+        <span class="badge bg-primary ms-3" id="count">0</span>
+
+        <div class="ms-4">
+          <input type="checkbox" id="toggle_btn" hidden >
+          <label for="toggle_btn" class="theme-toggle">
+            <i class="fa-solid fa-moon moon"></i>
+            <i class="fa-solid fa-sun sun"></i>
+          </label>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===== Hero Section ===== -->
+  <section class="hero d-flex align-items-center text-center text-white">
+    <div class="container">
+      <h1 class="display-4 fw-bold">Learn Without Limits</h1>
+      <p class="lead">Start your journey with the best online courses</p>
+
+      <a href="courses.html" class="btn btn-primary m-2">Browse Courses</a>
+      <a href="courses.html" class="btn btn-outline-light m-2">Sign Up Free</a>
+    </div>
+  </section>
+
+  <!-- ===== Platform Stats ===== -->
+  <section class="py-5 text-center">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-md-4">
+          <h3 id="coursesCount">0</h3>
+          <p>Total Courses</p>
+        </div>
+
+        <div class="col-md-4">
+          <h3 id="studentsCount">0</h3>
+          <p>Students Enrolled</p>
+        </div>
+
+        <div class="col-md-4">
+          <h3 id="instructorsCount">0</h3>
+          <p>Instructors</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Featured Courses ===== -->
+  <section class="py-5" id="featured">
+    <div class="container">
+
+      <h2 class="text-center mb-4">Featured Courses</h2>
+      <div class="row" id="featuredCourses"></div>
+
+    </div>
+  </section>
+
+  <!-- ===== Categories ===== -->
+  <section class="py-5" id="categories">
+    <div class="container">
+      <h2 class="text-center mb-4">Categories</h2>
+      <div class="row" id="categories-row"></div>
+    </div>
+  </section>
+
+  <!-- ===== Testimonials ===== -->
+<section class="py-5 bg-light">
+  <div class="container">
+    <h2 class="text-center mb-5 fw-bold">What Our Students Say?</h2>
+
+    <div class="row">
+
+      <div class="col-md-4 mb-4">
+        <div class="testimonial-card text-center p-4 h-100 shadow-sm rounded-4">
+          <div class="testimonial-avatar mb-3">
+            <i class="fa-solid fa-user-graduate fa-2x"></i>
+          </div>
+          <div class="text-warning mb-2">
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+          </div>
+          <p class="quote">"Amazing platform! I learned so much."</p>
+          <h6 class="mt-3 mb-1">Ahmed Ali</h6>
+          <small class="text-muted">Web Development Bootcamp</small>
+        </div>
+      </div>
+
+      <div class="col-md-4 mb-4">
+        <div class="testimonial-card text-center p-4 h-100 shadow-sm rounded-4">
+          <div class="testimonial-avatar mb-3">
+            <i class="fa-solid fa-user-graduate fa-2x"></i>
+          </div>
+          <div class="text-warning starts mb-2">
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-regular fa-star"></i>
+          </div>
+          <p class="quote">"Very clear explanations and great content."</p>
+          <h6 class="mt-3 mb-1">Sara Khaled</h6>
+          <small class="text-muted">Data Science Basics</small>
+        </div>
+      </div>
+
+      <div class="col-md-4 mb-4">
+        <div class="testimonial-card text-center p-4 h-100 shadow-sm rounded-4">
+          <div class="testimonial-avatar mb-3">
+            <i class="fa-solid fa-user-graduate fa-2x"></i>
+          </div>
+          <div class="text-warning starts mb-2">
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star-half-stroke"></i>
+          </div>
+          <p class="quote">"Best learning experience ever!"</p>
+          <h6 class="mt-3 mb-1">Ali Hassan</h6>
+          <small class="text-muted">UI/UX Design</small>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+  <!-- ===== Footer ===== -->
+  <footer class="footer-section text-white text-center p-5">
+    <div class="container">
+
+      <!-- اسم المنصة -->
+      <h5 class="footer-title mb-3">LearnSphere</h5>
+
+      <!-- Newsletter -->
+      <div class="footer-newsletter d-flex justify-content-center align-items-center gap-2 flex-wrap">
+        <input id="emailInput" type="email" placeholder="Enter your email" class="form-control w-50">
+        <button class="btn btn-primary" onclick="subscribeUser()">
+          Subscribe
+        </button>
+      </div>
+
+      <!-- Success message -->
+      <p id="subscribeMessage" class="mt-2 text-success" style="display:none;">Thank you for subscribing!</p>
+
+      <!-- Social icons -->
+      <div class="footer-socials mt-4">
+        <i class="fa-brands fa-facebook-f mx-2 social-icon"></i>
+        <i class="fa-brands fa-twitter mx-2 social-icon"></i>
+        <i class="fa-brands fa-instagram mx-2 social-icon"></i>
+        <i class="fa-brands fa-linkedin-in mx-2 social-icon"></i>
+      </div>
+
+      <!-- Copyright -->
+      <p class="mt-4 mb-0">© 2026 LearnSphere. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+
+  <!-- Bootstrap & JS -->
+  <script src="./js/bootstrap.bundle.min.js"></script>
+  <script src="./js/all.min.js"></script>
+  <script src="./js/main.js"></script>
+</body>
+
+</html>

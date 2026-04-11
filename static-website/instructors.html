@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Instructors | LearnSphere</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="./css/bootstrap.min.css" />
+  <!-- FontAwesome CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <!-- <link rel="stylesheet" href="./css/all.min.css" /> -->
+  <!-- Style CSS -->
+  <link rel="stylesheet" href="./css/style.css" />
+</head>
+
+<body>
+
+  <!-- ===== Navbar ===== -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top shadow">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="index.html">LearnSphere</a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="nav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="courses.html">Courses</a></li>
+          <li class="nav-item"><a class="nav-link" href="my-learning.html">My Learning</a></li>
+          <li class="nav-item"><a class="nav-link active" href="instructors.html">Instructors</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+        </ul>
+
+        <span class="badge bg-primary ms-3" id="count">0</span>
+
+        <div class="ms-4">
+          <input type="checkbox" id="toggle_btn" hidden />
+          <label for="toggle_btn" class="theme-toggle">
+            <i class="fa-solid fa-moon moon"></i>
+            <i class="fa-solid fa-sun sun"></i>
+          </label>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===== Instructors Section ===== -->
+  <section class="py-5">
+    <div class="container">
+      <h2 class="fw-bold text-center mb-4">Meet Our Instructors</h2>
+
+      <div class="mb-4">
+        <input type="text" id="instructorSearch" class="form-control" placeholder="Search instructor..." />
+      </div>
+
+      <div class="row g-4" id="instructorsContainer"></div>
+    </div>
+  </section>
+
+  <script src="./js/bootstrap.bundle.min.js"></script>
+  <script src="./js/instructors.js"></script>
+</body>
+
+</html>

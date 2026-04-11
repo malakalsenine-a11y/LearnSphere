@@ -1,0 +1,35 @@
+
+<div class="container">
+  <h2>Explore Our Courses</h2>
+
+  <!-- Filter Input -->
+  <input
+    type="text"
+    placeholder="Search by title or instructor..."
+    (input)="filterCourses($event)"
+    class="search-input"
+  />
+
+  <!-- Category Buttons -->
+  <div class="categories">
+    <button
+      *ngFor="let category of categories"
+      (click)="selectCategory(category)"
+       [class.active]="selectedCategory === category">    <!-- Property Binding -->
+      {{ category }}
+    </button>
+  </div>
+
+  <!-- Courses -->
+<div class="courses-grid" *ngIf="filteredCourses.length > 0; else noCourses">
+  <app-course-card
+    *ngFor="let course of filteredCourses"
+    [course]="course"
+    (enroll)="enrollCourse($event)">
+  </app-course-card>
+</div>
+
+<ng-template #noCourses>
+  <p>No courses found.</p>
+</ng-template>
+</div>

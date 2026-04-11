@@ -1,0 +1,12 @@
+.container {
+  width: 90%;
+  margin: 30px auto;
+}
+
+ul {
+  padding-left: 20px;
+}
+
+li {
+  margin-bottom: 10px;
+}

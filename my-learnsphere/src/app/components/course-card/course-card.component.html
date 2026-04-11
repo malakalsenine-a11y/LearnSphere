@@ -1,0 +1,45 @@
+<div class="course-card">
+
+  <!-- Coming Soon Overlay -->
+<div class="overlay-badge" *ngIf="!course.available">
+  Coming Soon
+</div>
+
+  <h3>{{ course.title }}</h3>
+  <p><strong>Instructor:</strong> {{ course.instructor }}</p>
+  <p><strong>Category:</strong> {{ course.category }}</p>
+  <p><strong>Duration:</strong> {{ course.duration }}</p>
+  <p><strong>Students:</strong> {{ course.studentsCount }}</p>
+  <p><strong>Price:</strong> ${{ course.price }}</p>
+
+<p class="rating">
+  <i class="fa-solid fa-star" *ngFor="let star of getStars(course.rating)"></i>
+  ({{ course.rating }})
+</p>
+
+  <!-- ngSwitch -->
+  <div [ngSwitch]="course.level" class="mb-2">
+    <span *ngSwitchCase="'Beginner'" class="badge beginner">Beginner</span>
+    <span *ngSwitchCase="'Intermediate'" class="badge intermediate">Intermediate</span>
+    <span *ngSwitchCase="'Advanced'" class="badge advanced">Advanced</span>
+    <span *ngSwitchDefault class="badge default-badge">Unknown</span>
+  </div>
+
+  <!-- Hide enroll button if unavailable -->
+<button *ngIf="course.available && !isEnrolled()" (click)="onEnroll()">
+  Enroll
+</button>
+
+<button *ngIf="course.available && isEnrolled()" disabled>
+  Enrolled ✓
+</button>
+</div>
+
+<!--  هنا حققنا: -->
+  <!-- *ngIf
+1- *ngFor
+2- ngSwitch
+3- (click) event
+4- hide enroll button if unavailable
+5- show "Coming Soon" overlay
+ -->
