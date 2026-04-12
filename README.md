@@ -47,6 +47,5 @@ Main features:
 - The live deployment is for the JavaScript version only.
 - The Angular version is intended for local demo during evaluation.
 
-
 ## Author
 Malak AL-Sinani
