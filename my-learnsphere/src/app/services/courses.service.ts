@@ -77,24 +77,24 @@ export class CoursesService {
 private enrolledCourses: Course[] = JSON.parse(localStorage.getItem('enrolledCourses') || '[]');
   constructor() { }
 
-  getCourses(): Course[] {
+  getCourses(): Course[] {           // يرجع كل الكورسات المتاحة
     return this.courses;
   }
 
-getCoursesByCategory(category: string): Course[] {
+getCoursesByCategory(category: string): Course[] {       // يرجع الكورسات حسب التصنيف
   if (category === 'All') {
     return this.courses;
   }
   return this.courses.filter(course => course.category === category);
 }
 
-  getTopRated(n: number): Course[] {
+  getTopRated(n: number): Course[] {                // يرجع أعلى كورس من حيث التقييم
     return [...this.courses]
       .sort((a, b) => b.rating - a.rating)
       .slice(0, n);
   }
 
-enrollCourse(course: Course): void {
+enrollCourse(course: Course): void {                  // يسجل المستخدم في كورس معين
   const exists = this.enrolledCourses.some(c => c.id === course.id);
   if (!exists) {
     this.enrolledCourses.push(course);
@@ -102,7 +102,7 @@ enrollCourse(course: Course): void {
   }
 }
 
-  getEnrolledCourses(): Course[] {
+  getEnrolledCourses(): Course[] {       // يرجع الكورسات اللي المستخدم مسجل فيها
     return this.enrolledCourses;
   }
 }
