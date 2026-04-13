@@ -48,7 +48,7 @@ fetch("./data/data.json")
 
 // ===== Display Course Details =====
 function displayCourseDetails(course) {
-const stars = generateStars(course.rating);
+  const stars = generateStars(course.rating);
 
   courseDetails.innerHTML = `
     <div class="card shadow-sm border-0 p-4">
@@ -135,7 +135,7 @@ submitQuizBtn.addEventListener("click", function (e) {
   localStorage.setItem(`quizScore_${currentCourse.id}`, score);
 
   submitQuizBtn.disabled = true;
-submitQuizBtn.textContent = "Quiz Submitted ✓";
+  submitQuizBtn.textContent = "Quiz Submitted ✓";
 
 });
 

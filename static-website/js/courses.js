@@ -1,3 +1,7 @@
+// ===== Get Instructor from URL =====
+const params = new URLSearchParams(window.location.search);
+const selectedInstructor = params.get("instructor");
+
 let allCourses = [];
 let selectedCategory = "All";
 
@@ -11,12 +15,20 @@ const filterButtons = document.querySelectorAll(".filter-btn");
 // ===== Fetch Data =====
 fetch("./data/data.json")
   .then((res) => res.json())
-  .then((data) => {
-    allCourses = data.courses;
-    displayCourses(allCourses);
-    updateNavbarCount();
-    applySavedTheme();
-  })
+ .then((data) => {
+  allCourses = data.courses;
+
+  // ⭐ فلترة حسب insrtuctor المطلوب من URL
+  if (selectedInstructor) {
+    allCourses = allCourses.filter(
+      (course) => course.instructor === selectedInstructor
+    );
+  }
+
+  displayCourses(allCourses);
+  updateNavbarCount();
+  applySavedTheme();
+})
   .catch((error) => {
     console.error("Error loading courses:", error);
   });

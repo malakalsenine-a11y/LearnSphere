@@ -67,7 +67,7 @@ function displayInstructors(data) {
   }
 
   data.forEach((instructor) => {
-const stars = generateStars(instructor.rating);
+    const stars = generateStars(instructor.rating);
 
     instructorsContainer.innerHTML += `
       <div class="col-md-6 col-lg-4">
@@ -85,7 +85,10 @@ const stars = generateStars(instructor.rating);
           <p class="mb-1"><strong>Courses:</strong> ${instructor.coursesCount}</p>
           <p class="text-warning fw-semibold stars">${stars} (${instructor.rating})</p>
 
-          <a href="courses.html" class="btn btn-outline-primary mt-3">View Courses</a>
+          <a href="courses.html?instructor=${encodeURIComponent(instructor.name)}" 
+   class="btn btn-outline-primary mt-3">
+   View Courses
+</a>
         </div>
       </div>
     `;

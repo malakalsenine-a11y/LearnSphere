@@ -1,13 +1,38 @@
+// ===== Counter Animation =====
+function animateCounter(id, target) {
+  let count = 0;
+  const speed = 50;
+  const increment = target / speed;
+
+  const element = document.getElementById(id);
+
+  const update = () => {
+    count += increment;
+
+    if (count < target) {
+      element.innerText = Math.floor(count);
+      requestAnimationFrame(update);
+    } else {
+      element.innerText = target;
+    }
+  };
+
+  update();
+}
+
+
+// ===== Fetch Data =====
 fetch('./data/data.json')
   .then(res => res.json())
   .then(data => {
 
-    // ===== Stats =====
-document.getElementById('coursesCount').innerText = data.stats.totalCourses;
-document.getElementById('studentsCount').innerText = data.stats.studentsEnrolled;
-document.getElementById('instructorsCount').innerText = data.stats.instructors;
+    // ===== Stats (مع الحركة) =====
+    animateCounter("coursesCount", data.stats.totalCourses);
+    animateCounter("studentsCount", data.stats.studentsEnrolled);
+    animateCounter("instructorsCount", data.stats.instructors);
 
-    // ===== Featured Courses (أول 3 فقط) =====
+
+    // ===== Featured Courses =====
     const featured = document.getElementById('featuredCourses');
 
     const firstThree = data.courses.slice(0, 3);
@@ -20,52 +45,51 @@ document.getElementById('instructorsCount').innerText = data.stats.instructors;
 
           <span class="badge bg-info">${course.category}</span>
 
-         <p class="mt-2">
-  <i class="fa-solid fa-chalkboard-user me-2 text-primary"></i>
-  ${course.instructor}
-</p>
+          <p class="mt-2">
+            <i class="fa-solid fa-chalkboard-user me-2 text-primary"></i>
+            ${course.instructor}
+          </p>
 
-<p class="text-warning stars">
-  ${generateStars(course.rating)} (${course.rating})
-</p>
+          <p class="text-warning stars">
+            ${generateStars(course.rating)} (${course.rating})
+          </p>
 
-<p>
-  <i class="fa-regular fa-clock me-2 text-secondary"></i>
-  ${course.duration}
-</p>
+          <p>
+            <i class="fa-regular fa-clock me-2 text-secondary"></i>
+            ${course.duration}
+          </p>
 
-<p>
-  <i class="fa-solid fa-signal me-2 text-dark"></i>
-  <span class="badge bg-warning text-dark">${course.level}</span>
-</p>
+          <p>
+            <i class="fa-solid fa-signal me-2 text-dark"></i>
+            <span class="badge bg-warning text-dark">${course.level}</span>
+          </p>
 
-<button class="btn btn-success w-100 mt-3">
-  <i class="fa-solid fa-user-plus me-2"></i>
-  Enroll Now
-</button>
+          <button class="btn btn-success w-100 mt-3">
+            <i class="fa-solid fa-user-plus me-2"></i>
+            Enroll Now
+          </button>
 
         </div>
       </div>
     `).join('');
 
-function generateStars(rating) {
-  let starsHTML = "";
-  const fullStars = Math.floor(rating);
+    function generateStars(rating) {
+      let starsHTML = "";
+      const fullStars = Math.floor(rating);
 
-  for (let i = 1; i <= 5; i++) {
-    if (i <= fullStars) {
-      starsHTML += `<i class="fa-solid fa-star"></i>`;
-    } else {
-      starsHTML += `<i class="fa-regular fa-star"></i>`;
+      for (let i = 1; i <= 5; i++) {
+        if (i <= fullStars) {
+          starsHTML += `<i class="fa-solid fa-star"></i>`;
+        } else {
+          starsHTML += `<i class="fa-regular fa-star"></i>`;
+        }
+      }
+
+      return starsHTML;
     }
-  }
 
-  return starsHTML;
-}
 
-    
     // ===== Categories =====
-    
     const iconMap = {
       "Web Development": "fa-solid fa-code",
       "Data Science": "fa-solid fa-chart-line",
@@ -76,13 +100,13 @@ function generateStars(rating) {
     };
 
     const colorMap = {
-  "Web Development": "primary",
-  "Data Science": "success",
-  "Design": "warning",
-  "Cybersecurity": "danger",
-  "Mobile Dev": "info",
-  "DevOps": "dark"
-};
+      "Web Development": "primary",
+      "Data Science": "success",
+      "Design": "warning",
+      "Cybersecurity": "danger",
+      "Mobile Dev": "info",
+      "DevOps": "dark"
+    };
 
     const categories = data.categories;
     const row = document.getElementById("categories-row");
@@ -92,25 +116,28 @@ function generateStars(rating) {
         <div class="category-card text-center p-4">
 
           <div class="icon-box">
-<i class="${iconMap[cat.name]} text-${colorMap[cat.name]}"></i>          </div>
+            <i class="${iconMap[cat.name]} text-${colorMap[cat.name]}"></i>
+          </div>
 
           <h5 class="mt-3 fw-bold">${cat.name}</h5>
-          <p class="text-muted">${cat.count} Courses</p>
+          <p class="text-muted">${cat.count || cat.courseCount} Courses</p>
 
         </div>
       </div>
     `).join('');
 
 
-    // ===== Navbar badge count  =====
-updateNavbarCount();
+    // ===== Navbar badge count =====
+    updateNavbarCount();
   });
 
 
-  function updateNavbarCount() {
+// ===== Navbar Count =====
+function updateNavbarCount() {
   const enrolled = JSON.parse(localStorage.getItem("enrolled")) || [];
   document.getElementById("count").innerText = enrolled.length;
 }
+
 
 // ===== Email Validation =====
 function isValidEmail(email) {
@@ -152,32 +179,20 @@ function subscribeUser() {
 }
 
 
-
-
-
-
-
-
-
-// Dark Mode
-
+// ===== Dark Mode =====
 const toggleBtn = document.getElementById("toggle_btn");
 const body = document.body;
 
-// استعادة الوضع من localStorage
 const savedTheme = localStorage.getItem("theme");
 
-// إذا الوضع المحفوظ هو dark
 if (savedTheme === "dark") {
   body.classList.add("dark");
-  toggleBtn.checked = true; // خلي الـ checkbox checked
+  toggleBtn.checked = true;
 }
 
-// حدث عند التغيير
 toggleBtn.addEventListener("change", () => {
   body.classList.toggle("dark");
 
-  // حفظ الوضع
   if (body.classList.contains("dark")) {
     localStorage.setItem("theme", "dark");
   } else {
